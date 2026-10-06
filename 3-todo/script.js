@@ -48,8 +48,15 @@ function updateCounter() {
 }
 
 function render() {
-    const visible = getVisibleTasks();
+    let visible = getVisibleTasks();
     list.innerHTML = '';
+
+    if (currentFilter === 'done') {
+        visible = visible.filter((task) => task.done);
+    }
+    if (currentFilter === 'active') {
+        visible = visible.filter((task) => !task.done);
+    }
 
     for (let i = 0; i < visible.length; i++) {
         const task = visible[i];
@@ -86,6 +93,7 @@ filterButtons.forEach((btn) => {
         filterButtons.forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         currentFilter = btn.dataset.filter;
+
         render();
     });
 });
