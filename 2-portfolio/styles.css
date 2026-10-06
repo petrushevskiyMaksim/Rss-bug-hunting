@@ -48,11 +48,12 @@ body {
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(0);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.12);
 }
 
 .card img {
