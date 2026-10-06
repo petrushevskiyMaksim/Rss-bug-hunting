@@ -55,7 +55,7 @@ function render() {
         const li = document.createElement('li');
         li.className = 'task';
         if (task.done) {
-            li.classList.add('completed');
+            li.classList.toggle('completed');
         }
 
         const span = document.createElement('span');
