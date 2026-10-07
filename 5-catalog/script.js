@@ -27,15 +27,14 @@ function getFiltered() {
     }
 
     if (category !== 'all') {
-        result = products.filter((p) => p.category === category);
+        result = result.filter((p) => p.category === category);
     }
+    console.log(result);
 
     if (sort === 'asc') {
         result.sort((a, b) => a.price - b.price);
     } else if (sort === 'desc') {
         result.sort((a, b) => b.price - a.price);
-    } else if (sort === 'default') {
-        result = [...products];
     }
     return result;
 }
@@ -47,13 +46,15 @@ function getSearch(list, text) {
 function render() {
     grid.innerHTML = '';
     const items = getFiltered();
+    console.log(items);
+
     items.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `<h3>${p.name}</h3><p class="cat">${p.category}</p><p class="price">$${p.price}</p>`;
         grid.appendChild(card);
     });
-    countEl.textContent = products.length;
+    countEl.textContent = items.length;
 }
 
 searchInput.addEventListener('input', render);
