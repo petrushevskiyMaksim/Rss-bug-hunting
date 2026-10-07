@@ -18,21 +18,17 @@ const countEl = document.getElementById('count');
 
 function getFiltered() {
     let result = products;
-    const search = searchInput.value;
+    const search = searchInput.value.trim();
     const category = categorySelect.value;
     const sort = sortSelect.value;
 
     if (search) {
-        result = result.filter((p) => p.name === search);
+        result = getSearch(result, search);
     }
 
     if (category !== 'all') {
         result = products.filter((p) => p.category === category);
     }
-
-    // sort === 'asc'
-    //     ? result.sort((a, b) => a.price > b.price)
-    //     : result.sort((a, b) => a.price < b.price);
 
     if (sort === 'asc') {
         result.sort((a, b) => {
@@ -43,6 +39,10 @@ function getFiltered() {
     }
 
     return result;
+}
+
+function getSearch(list, text) {
+    return list.filter((p) => p.name.toLocaleLowerCase().includes(text.toLocaleLowerCase()));
 }
 
 function render() {
