@@ -74,6 +74,8 @@ function applyPromo() {
 function clearCart() {
     cart.splice(0, cart.length);
     emptyMsg.hidden = false;
+    promoInput.value = '';
+    discount = 0;
     renderCart();
 }
 
