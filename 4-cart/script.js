@@ -73,6 +73,7 @@ function applyPromo() {
 
 function clearCart() {
     cart.splice(0, cart.length);
+    emptyMsg.hidden = false;
     renderCart();
 }
 
@@ -104,7 +105,8 @@ function renderCart() {
 
     badgeEl.textContent = countTotalEl;
     totalEl.textContent = total;
-    emptyMsg.hidden = true;
+    console.log(cart.length);
+    if (cart.length > 0) emptyMsg.hidden = true;
 }
 
 promoBtn.addEventListener('click', applyPromo);
